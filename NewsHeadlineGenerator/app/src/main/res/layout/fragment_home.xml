@@ -7,33 +7,115 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <EditText
-        android:id="@+id/news_article"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:padding="10dp"
-        android:gravity="start"
-        android:lines="10"
-        android:background="@drawable/edittext_background"
-        android:hint="Enter Your News Article Here..."/>
+        android:layout_height="wrap_content" >
 
-    <Button
-        android:id="@+id/submit_button"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:text="GENERATE HEADLINE"
-        android:textColor="@color/white"
-        android:background="#3742FF"
-        android:padding="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/news_article"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/headline_result"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/submit_button"
-        android:layout_marginTop="20dp"
-        android:padding="10dp"/>
+            <EditText
+                android:id="@+id/news_article"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:padding="10dp"
+                android:gravity="start"
+                android:lines="10"
+                android:background="@drawable/edittext_background"
+                android:hint="Enter Your News Article Here..."/>
+
+            <LinearLayout
+                android:id="@+id/model_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/news_article"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/submit_gpt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GENERATE HEADLINE\n(BY GPT)"
+                    android:textColor="@color/white"
+                    android:background="#3742FF"
+                    android:padding="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <Button
+                    android:id="@+id/submit_t5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GENERATE HEADLINE\n(BY T5)"
+                    android:textColor="@color/white"
+                    android:background="#3742FF"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"/>
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:layout_below="@+id/model_buttons"/>
+
+            <TextView
+                android:id="@+id/headline_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/model_buttons"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"/>
+
+
+            <RelativeLayout
+                android:id="@+id/improve_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:layout_below="@+id/headline_result">
+
+
+                <TextView
+                    android:id="@+id/improve_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Which one of these goes best with your interest"
+                    android:textAlignment="center"/>
+
+                <Spinner
+                    android:id="@+id/improve_choices"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/improve_label"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"/>
+                
+                <Button
+                    android:id="@+id/improve_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:text="HELP US IMPROVE"
+                    android:textColor="@color/white"
+                    android:background="#3742FF"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@+id/improve_choices"/>
+                
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
 </RelativeLayout>
